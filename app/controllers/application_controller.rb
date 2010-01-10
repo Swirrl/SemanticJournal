@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_account, :get_session_user
   
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password
   
   private
     
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
       
       # For now, this is inside the project folder, but could be somewhere else, and symlinked in.
       # Could also use a sharding approach if we get lots of users!.
-      prepend_view_path ["#{RAILS_ROOT}/app/views/themes/custom/#{@blog.name}/views/"]
+      prepend_view_path ["#{RAILS_ROOT}/app/views/themes/custom/#{@blog.name}/"]
     
     end
 
