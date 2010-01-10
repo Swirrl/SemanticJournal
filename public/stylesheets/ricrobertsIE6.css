@@ -1,8 +1,0 @@
-/* fix for IE6 */
-#disqus_thread {
-	width:550px; 
-}
-
-.gist-data, .gist-file, .gist-meta {
-	width:550px;
-}
