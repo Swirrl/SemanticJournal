@@ -1,0 +1,20 @@
+<% unless flash[:notice] %>
+  <p>Please enter your email address and password.</p>
+<% else %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% form_tag :action => 'create' do %>
+  <fieldset>
+    <label for="email">
+      Email address
+			<%= text_field_tag :email %>
+		</label>
+		<label for="password">
+			Password
+			<%= password_field_tag :password %>
+		</label>
+		<%= submit_tag "Log in", :name => "log_in" %>
+	</fieldset>  		
+<% end %>
+

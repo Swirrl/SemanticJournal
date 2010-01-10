@@ -1,0 +1,19 @@
+<% user = Account.get(@article.published_by) -%>
+<% published = Time.parse(@article.published_at.to_s) %>
+
+<% rdfa_article_tag(:div, {:class => "post"}) do %>
+  <%= rdfa_title_tag(:h2, @article.title ) %>
+	<div class="post_meta">
+		By <%= rdfa_author_tag(:span, user.personal_uri,user.display_name) %>
+	  on <%= rdfa_date_tag(:span, published) %>
+  	| <a href="<%="http://#{@blog.canonical_url}/articles/#{@article.permalink}#disqus_thread"%>">Comments</a>
+	</div>
+	<div class="post_content">
+	  <% if @article.raw? %>
+		  <%= @article.content %>
+		<% else %>
+		  <%= textilize(@article.content) %>
+		<% end %>
+	</div>
+	<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/ricroberts/embed.js"></script><noscript><a href="http://disqus.com/forums/ricroberts/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<% end %>

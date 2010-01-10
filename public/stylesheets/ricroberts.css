@@ -1,0 +1,191 @@
+body { 
+	color: #000000;
+	background: #F1EBD9;
+}
+
+a, a:visited {
+	color: #C89A2B;
+}
+
+a:hover {
+	color: #6F9F85;
+}
+	
+#masthead {
+	padding-top:30px;
+	vertical-align:baseline;
+    clear:both; 
+}
+
+#masthead #strapline {
+	float:left;
+	margin-top:18px;
+	font-size:16px;
+	margin-left:10px;
+	color:#7C6563;
+}
+
+#masthead h1 {
+    font-size:40px;
+    float:left;
+	margin-bottom:0;
+	line-height:40px;
+}
+
+#masthead h1 a {
+	color:#000000;
+}
+
+#masthead #subscribe {
+	font-size:16px;
+	margin-top:18px;
+	float:right;
+}
+#masthead #subscribe a, #masthead #subscribe a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+
+h1 a, h2 a {
+	text-decoration:none;
+}
+
+#content {
+	background: #FFFFFF;
+	clear:both;
+	float:left;
+}
+#twitter {
+	width:100%;
+	padding-bottom:5px;
+	margin-bottom:10px;
+	background: #6A878B;
+	color:#FFFFFF;
+	float:left;
+	min-width:1000px;
+	overflow:hidden;
+	white-space:nowrap;
+}
+#twitter a, #twitter a:visited {
+	color: #EDEFF4 ;
+}
+#twitter a:hover{
+	color: #FFFFFF ;
+}
+#twitter_meta {
+	padding-top:4px;
+	float:left;
+}
+#tweet{
+	margin-left:10px;
+	padding-top:4px;
+	float:left;
+}
+#twitter ul {
+	list-style-type:none;
+	margin-bottom:0px;
+}
+#twitter ul li {
+	margin-left: 0px;
+	display: inline;
+}
+#twitter #twitter_icon {
+	float:left;
+	padding-left:4px;
+	margin-right:10px;
+}
+
+
+.sidebar_entry {
+  margin: 0px 0px 20px 0;
+  padding-bottom:20px;
+  border-bottom:1px solid #F5F4F4; 
+  float:left;
+  width:100%;
+}
+
+#about_me img {
+	float:left;
+	margin-right:10px;
+	border: 5px solid whitesmoke;
+}
+
+#other_blogs img {
+	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+
+h1, h2, h3, h4  {
+	margin-bottom:0.2em;
+	line-height:1.3em;
+}
+
+.post_meta {
+	margin-bottom:10px;
+	color:#7C6563;
+	font-size:14px;	
+	
+}
+.post_content p {
+	margin-bottom:10px;
+}
+
+.post_preview, .post {
+  margin-left:10px;
+}
+
+.post .post_content {
+	margin-bottom:20px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #F5F4F4;
+}
+.post_preview .post_content {
+	margin-bottom:10px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #F5F4F4;
+}
+
+.newer_articles {
+	float:left;
+	margin-left:10px;
+}
+
+.older_articles {
+	float:right;
+}
+
+#share_this {
+	float:right;
+	margin-top:5px;
+}
+
+#copyright {
+	padding: 10px;
+	float: left;
+	font-size:11px;
+}
+
+#copyright a {
+	color:#7C6563;
+}
+
+/* tweak for disqus theme */
+#disqus_thread #dsq-content .dsq-item-trackback input.dsq-trackback-url {
+	background: #FFFFFF;
+}
+
+.main { margin-top:10px; margin-bottom:10px; }
+.sidebar { margin-top:10px; margin-bottom:10px; }
+
+/* won't validate, so stick at end */
+#content {
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.1) 3px 3px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.1) 3px 3px;
+}
+
+#masthead h1 a {
+	text-shadow:2px 2px #CCCCCC;
+}

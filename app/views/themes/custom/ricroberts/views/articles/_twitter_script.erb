@@ -1,0 +1,20 @@
+<script src="http://ricroberts.s3.amazonaws.com/twitter.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+  $(document).ready( function() {
+	  getTweets();
+  });
+
+  function getTweets() {
+     getTwitters('tweet', { 
+        id: 'ricroberts', 
+        count: 1, 
+        enableLinks: true, 
+        ignoreReplies: false, 
+        clearContents: true,
+				template: '<a href="http://twitter.com/ricroberts">@RicRoberts</a> on Twitter: %text% (<a href="http://twitter.com/ricroberts/statuses/%id%/">%time%</a>)'
+      });
+  }
+//]]>
+</script>

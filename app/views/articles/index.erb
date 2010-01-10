@@ -1,0 +1,7 @@
+<%= link_to "create a new article", :action => 'new' %><br/>
+
+<h1>Articles</h1>
+
+<% @articles.each do |a| %>
+	<%= render :partial => 'article', :object => a %>
+<%end%>

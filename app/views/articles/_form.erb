@@ -1,0 +1,7 @@
+<% form_for(@article, :url => post_article_path(@article) ) do |f| %>
+	<p>Title: <%= f.text_field :title %></p>
+	<p>Content: </p>
+	<%= f.text_area :content, :cols => 60 %>
+	<p>Published? <%= f.check_box :is_published?, {}, true, false %></p>
+	<br /><%= f.submit "save" %>
+<% end %>
