@@ -3,7 +3,7 @@ namespace :semjo do
   desc "creates the couch 'core' database
   e.g. rake couchdb:create_semjo_db COUCH_SERVER='http://127.0.0.1:5984'
   Note: COUCH_SERVER is optional and defaults to localhost"
-  task (:create_semjo_db => :couch_server) do
+  task (:create_semjo_db => :environment) do
     couch_server = ENV['COUCH_SERVER'] || "http://127.0.0.1:5984" 
     svr = CouchRest::Server.new(couch_server)   
     svr.create_db("semanticjournal") 
