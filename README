@@ -13,14 +13,14 @@ Contents of this README file
 8. Setting the Domain(s) for a blog
 9. How the data is organized
   9.1 The semanticjournal database
-  9.2 9.2 The individual blog databases
+  9.2 The individual blog databases
 10. Themes
 11. Feeds
 
 1. Overview
 ===========
 
-SemanticJournal (or 'semjo' for short) is a simple Rails-based blog-engine which uses CouchDB for storage.  It includes some Semantic Web features, such as helpers to aid with marking up elements on public-facing pages with RDFa (such as the date, author, title of articles etc).
+SemanticJournal (or "semjo" for short) is a simple Rails-based blog-engine which uses CouchDB for storage.  It includes some Semantic Web features, such as helpers to aid with marking up elements on public-facing pages with RDFa (such as the date, author, title of articles etc).
 
 Current Features
 ----------------
@@ -61,36 +61,36 @@ TODOs/Coming soon
 -------------------
 1. Clone the repo from github.
 
-2. Run the create_semjo_db rake task to create the main 'semanticjournal' CouchDB.
+2. Run the create_semjo_db rake task to create the main "semanticjournal" CouchDB.
 e.g. rake semjo:create_semjo_db
 
-3. Run the create_new_blog rake task to make the CouchDB for your blog. (Each blog needs its own database). The BLOG_HOST parameter is the domain under which you want to appear, and BLOG_NAME is just an internal identifier for the blog (see 'How the data is organized' section below for more details). If you don't specify a BLOG_HOST, the blog will be available at #{BLOG_NAME}.semanticjournal.com 
-e.g. rake semjo:create_new_blog BLOG_NAME='mynewblog' BLOG_HOST='http://myblogsdomain.com' COUCH_SERVER='http://127.0.0.1:5984'
+3. Run the create_new_blog rake task to make the CouchDB for your blog. (Each blog needs its own database). The BLOG_HOST parameter is the domain under which you want to appear, and BLOG_NAME is just an internal identifier for the blog (see "How the data is organized" section below for more details). If you don't specify a BLOG_HOST, the blog will be available at #{BLOG_NAME}.semanticjournal.com 
+e.g. rake semjo:create_new_blog BLOG_NAME='jamestkirk' BLOG_HOST='http://jimkirksblog.com' COUCH_SERVER='http://127.0.0.1:5984'
 
-4. Run the create_new_user rake task to create a user for the blog. If an account already exists with the ACCOUNT_NAME specified, it will use that one.  The PERSONAL_URI should be an identifier for the user on the web (that ideally, returns rdf).
-e.g. rake couchdb:create_user ACCOUNT_NAME=ric DISPLAY_NAME='ric roberts' PERSONAL_URI='http://swirrl.com/ric.rdf#me' PASSWORD='pwd1' EMAIL='hello@ricroberts.com' BLOG_NAME='ricroberts' COUCH_SERVER='http://127.0.0.1:5984'
+4. Run the create_new_user rake task to create a user for the blog. If an account already exists with the ACCOUNT_NAME specified, it will use that one.  The PERSONAL_URI should be an identifier for the person on the web (that ideally, returns rdf).
+e.g. rake couchdb:create_user ACCOUNT_NAME=jim DISPLAY_NAME='jim kirk' PERSONAL_URI='http://jimkirksblog.com/me.rdf#me' PASSWORD='pwd1' EMAIL='jamestkirk@starshipenterprise.org' BLOG_NAME='jamestkirk' COUCH_SERVER='http://127.0.0.1:5984'
 
-4. Set up an apache virtual host for the new domain.  For running in development mode, you'll also need to set up an apache alias and /etc/hosts entry.  (The simplest way to do this is with the 'ghost' gem, and the Passenger Pref pane for OS X).
+4. Set up an apache virtual host for your blog's domain.  For running in development mode, you'll also need to set up an apache alias and /etc/hosts entry.  (The simplest way to do this is with the "ghost" gem, and the Passenger Pref pane for OS X).
 
-5. Make a new folder in the views/themes/custom folder of the project (at the same level as the ricroberts folder).  
+5. Make a new folder in the views/themes/custom folder of the project (at the same level as the ricroberts folder).  Inside that folder, create 2 ERB templates: home.erb and show.erb, for your blog's home page and for individual posts, respectively. (You can use partials to help organise the code).  
 
-6. Inside the new folder you made in the previous step, create 2 ERB templates: home.erb and show.erb, for your blog's home page and for individual posts, respectively. (These can use partials to help organise the code).  
-
-* In home.erb, an instance variable called @articles is available which contains a page's worth of articles. At the moment, the @page_size defaults to 8, but you can change it in ArticlesController#home.
+* In home.erb, an instance variable called @articles is available which contains a page's worth of articles. At the moment, the @page_size defaults to 8, but you can change it in ArticlesController#home.  There's a helper called "pagination_links" for providing prev/next page links.
 
 * In show.erb, an instance variable called @article is available, which is article being shown.
 
-Note: I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the ricroberts folder, which you can use as a reference or for ideas.  Note: the test, and test2 folders are there for the unit tests and you can just ignore them.
+Note: I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the ricroberts folder, which you can use as a reference or for ideas.  Note: the test, and test2 folders are there for the unit tests and you can safely ignore them unless you're getting stuck into the code.
 
-7. In your web browser, navigate to the host you specified in step 2. If your template is valid, you'll see your home page.  To log in go to /admin, and enter the email and password you specified in step 3.
+7. In your web browser, navigate to the host you specified in step 2. If your home.erb template is valid, you'll see your home page.  To log in go to /admin, and enter the email and password you specified in step 3.
+
+Happy blogging.
 
 
 3. Storing Assets
 =================
 
-Right now, SemanticJournal doesn't provide a means for uploading and storing assets for your blog (such as images, CSS, javascript files etc).  I plan to add a user interface for uploading files to S3 soon, but for the moment, you can just stick them on S3 (or your preferred file store), and reference those files from your ERB templates.
+Right now, SemanticJournal doesn't provide a means for uploading and storing assets for your blog (such as images, CSS, javascript files etc).  I plan to add a user interface for uploading files to S3 soon, but for the moment, you can just manually stick them on S3 (or your preferred file store), and reference those files from your ERB templates.
 
-Note: Tempting as it may be, I recommend that you DON'T just put these kinds of things in the public folder.  This is because if you're hosting several blogs on your SemanticJournal instance, users (including bots) be able to access these public files from any of your blog's urls, leading to confusion (and possibly embarrassment, depending on the different blog's topics). 
+Note: Tempting as it may be, I recommend that you DON'T just put these kinds of things in the public folder.  This is because if you're hosting several blogs on your SemanticJournal instance, users (including bots) be able to access these public files from any of your blog's urls, leading to confusion (and possibly embarrassment, depending on the different blogs' topics).  You might not want cross-pollination of blog content.
 
 
 4. Configuration
@@ -108,17 +108,19 @@ There's a stub capistrano deploy.rb in the config folder which should get you st
 
 * In CouchDB, there's no such thing as migrations, so the deploy:cold task has been overridden not to try to run any migrations. (Don't try to run deploy:migrate, or deploy:migrations - they wont work).
 
-* By default, CouchRest updates all the design docs on a database every time you restart the process (which causes a reindex of that kind of document in the database: a potentially time consuming process). The SemanticJournalCouchRest::DeferUpdateDesignDocsInProduction module that extends all my CouchRest document types prevents this happening in production mode as it's often the case that nothing has changed.  So, if you update your CouchRest document code, you'll need to manually initiate the re-indexing.  This can be done by using the rake tasks that I've added in the "couchdb" namespace. e.g.
+* By default, CouchRest updates all the design docs on a database every time you restart the process (which causes a reindex of that kind of document in the database: a potentially time consuming process). The SemanticJournalCouchRest::DeferUpdateDesignDocsInProduction module that extends all my CouchRest document types prevents this happening in production mode as it's often the case that nothing has changed.  So, if you update your CouchRest document code, you'll need to manually initiate the re-indexing on your production server.  This can be done by using the rake tasks that I've added in the "couchdb" namespace. e.g.
 
 "rake couchdb:refresh_design_docs" will refresh all the design docs on the local server.
 
-Taks a look at lib/tasks/design_docs.rake for more focused tasks.
+Taks a look at lib/tasks/design_docs.rake for other options.
  
 
 6. Tests
 ========
 
-The default rake task runs all the unit and funcitonal tests, as you'd expect for a Rails project.  The tests will create 2 databases: semanticjournal_test and semanticjournal_blog_test.  If these bother you, you can delete them (they will be re-created the next time the tests run).
+The default rake task runs all the unit and funcitonal tests, as you'd expect for a Rails project.  (i.e. just run rake).
+
+The tests will create 2 databases: semanticjournal_test and semanticjournal_blog_test.  If these bother you, you can delete them (they will be re-created the next time the tests run).
 
 A couple of the functional tests rely on the test and test2 blog themes existing, but you can delete these in production if you like.
 
@@ -126,31 +128,33 @@ A couple of the functional tests rely on the test and test2 blog themes existing
 7. Caching
 ==========
 
-SemanticJournal uses Rack/Cache. By default this is set up to cache in the tmp/cache folder.  If you're changing code, and things aren't changing in your browser, try deleting this (it will automatically rebuild the cache on subsequent requests).
+SemanticJournal uses Rack/Cache. By default this is set up to create a cache in the tmp/cache folder.  If you're changing code, and things aren't changing in your browser, try deleting this (it will automatically rebuild the cache on subsequent requests).
 
 The home page is considered to be stale if the most recently updated article has changed since the last request.
 
-An article page is considered to be stale if it has been updated since the last request.
+An article is considered to be stale if it has been updated since the last request.
 
 
 8. Setting the Domain(s) for a blog
 ===================================
 
-The hosts property of the Blog documents in the semanticjournal CouchDB is an array of all the hosts that correspond to a blog.  If SemanticJournal receives a request at o one of these hosts it will render the blog in which it appears.  If that host is not the first item in that blog's hosts array, it will redirect to the first host in the array.  This is that blog's 'canonical url'.  
+The hosts property of the Blog documents in the semanticjournal CouchDB is an array of all the hosts that correspond to a blog.  
+
+If SemanticJournal receives a request at one of these hosts it will render the blog in whose array it appears.  If that host is not the first item in that blog's hosts array, it will redirect to the first host in the array.  This is that blog's "canonical url".  
 
 
 9. How the data is organized
 ============================
 
-As I mentioned in the Getting Started Section above, each blog in Semantic Journal has its own CouchDB, and there's also a 'central' database called semanticjournal.
+As I mentioned in the "Getting Started" Section above, each blog in Semantic Journal has its own CouchDB, and there's also a central/master database called "semanticjournal".
 
 9.1 The semanticjournal database
 --------------------------------
 The semanticjournal database stores 2 types of document:
 
-* Blogs running on your instance, and their hosts/domains (the Blog couchrest document type). See the section above for how to set up domains.
+* All blogs running on your instance, and their hosts/domains (the "Blog" couchrest document type). See the section above for how to set up domains.
 
-* Accounts in the system (the Account document type). An account is a user/person in the system. Accounts can be given log-in access to one or more blogs running on the system.
+* Accounts in the system (the "Account" document type). An account is a user/person in the system. Accounts can be given log-in access to one or more blogs running on the system.
 
 9.2 The individual blog databases
 ---------------------------------
@@ -162,7 +166,7 @@ The semanticjournal database stores 2 types of document:
 10. Themes
 ==========
 
-I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the views/themes/ricroberts folder, which you can use as a reference or for ideas.  Note: the test, and test2 folders are there for the unit tests and you can just ignore them (see the Testing section of this README).
+I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the views/themes/ricroberts folder.  You can use as a coding reference or for ideas.  Note: the "test", and "test2" folders are there for the unit tests and you can just ignore them (see the "Tests" section of this README).
 
 10.1 Semantic Helpers
 ---------------------
