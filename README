@@ -96,7 +96,7 @@ Note: Tempting as it may be, I recommend that you DON'T just put these kinds of 
 4. Configuration
 ================
 
-The only configuration you really need to worry about is the location of the CouchDB for your production environment.  This can be set in config/config.yml
+The only configuration you might need to worry about is the location of the CouchDB for your production environment (e.g. if this is on a different server to your web server). This can be set in config/config.yml
 
 
 5. Deployment
