@@ -43,7 +43,7 @@ namespace :semjo do
     
   desc "creates an admin user in the specifed blog, with the specified acct name, first_name, last_name, uri, pwd and email
   e.g. rake couchdb:create_user ACCOUNT_NAME=ric DISPLAY_NAME='ric roberts' PERSONAL_URI='http://swirrl.com/ric.rdf#me' 
-  PASSWORD='pwd1' EMAIL='ric@swirrl.com' BLOG_NAME='ricroberts' COUCH_SERVER='http://127.0.0.1:5984'
+  PASSWORD='pwd1' EMAIL='hello@ricroberts.com' BLOG_NAME='ricroberts' COUCH_SERVER='http://127.0.0.1:5984'
   Note: COUCH_SERVER defaults to local server"
   task (:create_user => :environment) do |t, args|
     

@@ -5,7 +5,7 @@ class Account < CouchRest::ExtendedDocument
   include CouchRest::Validation
   
   def self.database
-    CouchRest.database("#{COUCH_DB_LOCATION}/semanticjournal")  # the central db
+    CouchRest.database("#{APP_CONFIG['couch_db_location']}/semanticjournal")  # the central db
   end
 
   # WE USE THE ACCOUNT NAME AS THE ID. 

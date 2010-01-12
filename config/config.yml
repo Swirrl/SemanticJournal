@@ -1,0 +1,9 @@
+development:
+  couch_db_location: 'http://127.0.0.1:5984'
+
+test:
+  couch_db_location: 'http://127.0.0.1:5984'
+
+production:
+  couch_db_location: 'http://127.0.0.1:5984'
+#  couch_db_location: 'http://my.production.server:5984'

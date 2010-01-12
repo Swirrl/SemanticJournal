@@ -32,10 +32,12 @@
 	<div id="content">
 	  
 		<div class="grid_8 main">
-			<% @articles.each do |article|%>
-        <%= render :partial => 'post_preview', :locals => {:article => article}%>
-			<% end %>
-			<%= pagination_links() %>
+		  <%if @articles%>
+			  <% @articles.each do |article|%>
+          <%= render :partial => 'post_preview', :locals => {:article => article}%>
+			  <% end %>
+			  <%= pagination_links() %>
+			<%end%>
 		</div> 
 		<%= render :partial => 'sidebar' %>
   </div>

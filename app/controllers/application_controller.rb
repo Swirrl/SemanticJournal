@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
         return false #  quit filter chain
       end
       
-      svr = CouchRest::Server.new(COUCH_DB_LOCATION)
+      svr = CouchRest::Server.new(APP_CONFIG['couch_db_location'])
       couch_db = CouchRest::Database.new(svr, @blog.name)
 
       Thread.current[:blog_db] = couch_db

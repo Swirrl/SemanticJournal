@@ -16,12 +16,14 @@ class ArticlesController < ApplicationController
   end
   
   def home 
-    if stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true)
-      @page = params[:page].to_i || 1
-      @page = 1 if @page < 1
-      @per_page = 8
-      @articles = Article.get_paginated_articles({:page => @page, :per_page => @per_page})
-      @total_articles = Article.by_published_at(:reduce => true)["rows"][0]["value"]
+    if @most_recently_updated_article
+      if stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true)
+        @page = params[:page].to_i || 1
+        @page = 1 if @page < 1
+        @per_page = 8
+        @articles = Article.get_paginated_articles({:page => @page, :per_page => @per_page})
+        @total_articles = Article.by_published_at(:reduce => true)["rows"][0]["value"]
+      end
     end
   end  
   

@@ -37,18 +37,21 @@ module ArticlesHelper
     content_tag(tag_name, article_options, {}, &block) 
   end
   
+  # make a title tag (e.g. :h2), and the content to go in the title.
   def rdfa_title_tag(tag_name, title_content)
     content_tag(tag_name, {"property" => "dc:title"}) do
       title_content
     end
   end
   
+  # make an author tag (e.g. :div), and the personal uri and display name of the article's author
   def rdfa_author_tag(tag_name, personal_uri, display_name)
     content_tag(tag_name, {"rel" => "dc:creator", "resource" => personal_uri} ) do
       h(display_name)
     end
   end
   
+  # make a date tag with the name passed in (e.g. :div), and the date passed.
   def rdfa_date_tag(tag_name, date, time_format = "%d %b %Y")
     content_tag(tag_name, {"property" => "dc:date", "datatype"=>"xsd:dateTime", "content" => date.xmlschema} ) do
       date.strftime(time_format)

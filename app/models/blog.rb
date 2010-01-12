@@ -3,7 +3,7 @@ class Blog < CouchRest::ExtendedDocument
   extend SemanticJournalCouchRest::DeferUpdateDesignDocsInProduction 
 
   def self.database
-    CouchRest.database("#{COUCH_DB_LOCATION}/semanticjournal")  # the central db
+    CouchRest.database("#{APP_CONFIG['couch_db_location']}/semanticjournal")  # the central db
   end
   
   property :name
