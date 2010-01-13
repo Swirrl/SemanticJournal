@@ -68,7 +68,7 @@ e.g. rake semjo:create_semjo_db
 e.g. rake semjo:create_new_blog BLOG_NAME='jamestkirk' BLOG_HOST='http://jimkirksblog.com' COUCH_SERVER='http://127.0.0.1:5984'
 
 4. Run the create_new_user rake task to create a user for the blog. If an account already exists with the ACCOUNT_NAME specified, it will use that one.  The PERSONAL_URI should be an identifier for the person on the web (that ideally, returns rdf).
-e.g. rake couchdb:create_user ACCOUNT_NAME=jim DISPLAY_NAME='jim kirk' PERSONAL_URI='http://jimkirksblog.com/me.rdf#me' PASSWORD='pwd1' EMAIL='jamestkirk@starshipenterprise.org' BLOG_NAME='jamestkirk' COUCH_SERVER='http://127.0.0.1:5984'
+e.g. rake semjo:create_user ACCOUNT_NAME=jim DISPLAY_NAME='jim kirk' PERSONAL_URI='http://jimkirksblog.com/me.rdf#me' PASSWORD='pwd1' EMAIL='jamestkirk@starshipenterprise.org' BLOG_NAME='jamestkirk' COUCH_SERVER='http://127.0.0.1:5984'
 
 4. Set up an apache virtual host for your blog's domain.  For running in development mode, you'll also need to set up an apache alias and /etc/hosts entry.  (The simplest way to do this is with the "ghost" gem, and the Passenger Pref pane for OS X).
 
