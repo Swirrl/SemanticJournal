@@ -2,7 +2,7 @@ namespace :couchdb do
 
   # refresh all the design docs on the server
   # e.g. rake refresh_design_docs SERVER="http://127.0.0.1:5984"
-  task :refresh_design_docs do
+  task (:refresh_design_docs => :environment) do
     
     server_location = ENV['SERVER']
     
@@ -16,7 +16,7 @@ namespace :couchdb do
 
   # refresh design docs for a specific db
   # e.g. rake refresh_design_docs_on_db SERVER="http://127.0.0.1:5984" DATABASE=my_database 
-  task :refresh_design_docs_on_db do
+  task (:refresh_design_docs_on_db => :environment) do
   
     db_name = ENV['DATABASE']  
     server_location = ENV['SERVER']
@@ -34,7 +34,7 @@ namespace :couchdb do
 
   # refresh design docs for a specific db and model
   # e.g. rake refresh_design_doc_for_model SERVER="http://127.0.0.1:5984" DATABASE=my_database MODEL=MyModel
-  task :refresh_design_doc_for_model do 
+  task (:refresh_design_doc_for_model => :environment) do 
   
     db_name = ENV['DATABASE']
     model_name = ENV['MODEL']

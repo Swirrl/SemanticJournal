@@ -5,7 +5,7 @@ server "myserver", :app, :web, :db, :primary => true
 set(:deploy_to) { File.join("", "home", user, application) }
 
 default_run_options[:pty] = true
-set :repository,  "git@github.com:Swirrl/semanticjournal.git"
+set :repository,  "git@github.com:Swirrl/SemanticJournal.git"
 set :scm, "git"
 set :scm_passphrase, "passphrase"
 set :user, "my_user"
