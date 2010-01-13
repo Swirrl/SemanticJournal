@@ -10,7 +10,7 @@ namespace :couchdb do
       
     svr.databases.each do |db_name|
       ENV['DATABASE'] = db_name
-      Rake::Task["refresh_design_docs_on_db"].execute  
+      Rake::Task["couchdb:refresh_design_docs_on_db"].execute  
     end
   end
 
@@ -27,7 +27,7 @@ namespace :couchdb do
     ObjectSpace.each_object(Class) do |k| 
       if k.ancestors.include?(CouchRest::ExtendedDocument) && k.name != "CouchRest::ExtendedDocument"     
         ENV['MODEL'] = k.name   
-        Rake::Task["refresh_design_doc_for_model"].execute  
+        Rake::Task["couchdb:refresh_design_doc_for_model"].execute  
       end
     end
   end
