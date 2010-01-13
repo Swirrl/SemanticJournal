@@ -40,8 +40,8 @@ TODOs/Coming soon
 * Uploading assets to S3.
 * Add a way to clear the cache for a blog from the admin interface.
 * Finish rights/roles stuff.
+* Add a way to call the design doc reindexing tasks from capistrano (kind of equivalent to deploy:migrations)
 * Better documentation & comments in the code to help others use/modify/contribute.
-
 
 2. Installing
 =============
