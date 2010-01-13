@@ -6,7 +6,8 @@
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
   :key         => '_semanticjournal_session',
-  :secret      => 'my_secret_key123456789012345678901234567890' #replace this!
+  :secret      => 'my_secret_key123456789012345678901234567890', #replace this!
+  :expire_after => 1.hour #change this if you want longer sessions (or remove to just expire when session ends).
 }
 
 # Use the database for sessions instead of the cookie-based default,
