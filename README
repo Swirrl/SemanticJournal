@@ -64,8 +64,8 @@ TODOs/Coming soon
 2. Run the create_semjo_db rake task to create the main "semanticjournal" CouchDB.
 e.g. rake semjo:create_semjo_db
 
-3. Run the create_new_blog rake task to make the CouchDB for your blog. (Each blog needs its own database). The BLOG_HOST parameter is the domain under which you want to appear, and BLOG_NAME is just an internal identifier for the blog (see "How the data is organized" section below for more details). If you don't specify a BLOG_HOST, the blog will be available at #{BLOG_NAME}.semanticjournal.com 
-e.g. rake semjo:create_new_blog BLOG_NAME='jamestkirk' BLOG_HOST='http://jimkirksblog.com' COUCH_SERVER='http://127.0.0.1:5984'
+3. Run the create_new_blog rake task to make the CouchDB for your blog. (Each blog needs its own database). The BLOG_HOST parameter is the domain under which you want to appear, and BLOG_NAME is just an internal identifier for the blog (see "How the data is organized" section below for more details). If you don't specify a BLOG_HOST, the blog will be available at #{BLOG_NAME}.semanticjournal.com. 
+e.g. rake semjo:create_new_blog BLOG_NAME='jamestkirk' BLOG_HOST='jimkirksblog.com' COUCH_SERVER='http://127.0.0.1:5984'
 
 4. Run the create_new_user rake task to create a user for the blog. If an account already exists with the ACCOUNT_NAME specified, it will use that one.  The PERSONAL_URI should be an identifier for the person on the web (that ideally, returns rdf).
 e.g. rake semjo:create_user ACCOUNT_NAME=jim DISPLAY_NAME='jim kirk' PERSONAL_URI='http://jimkirksblog.com/me.rdf#me' PASSWORD='pwd1' EMAIL='jamestkirk@starshipenterprise.org' BLOG_NAME='jamestkirk' COUCH_SERVER='http://127.0.0.1:5984'
