@@ -63,8 +63,9 @@ class Article < CouchRest::ExtendedDocument
   
   # special setter for permalink
   def set_permalink(new_permalink)
-    if new_permalink != self.permalink # only bother doing anything if it's actually changed.
-      self.permalink = Article.sanitize_permalink(new_permalink) # make sure it's sanitized
+    new_permalink = Article.sanitize_permalink(new_permalink) # make sure it's sanitized
+    if new_permalink != self.permalink # only bother doing anything if it's actually changed.     
+      self.permalink = new_permalink
       self.permalink_updated = true # make a note that we're changing the permalink
     end
   end
