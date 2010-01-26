@@ -43,7 +43,7 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
   
   # maybe change to couchrest once the gemcutter repo is sorted!
-  config.gem "mattetti-couchrest", :lib => "couchrest", :source => "http://gems.github.com", :version => "0.34" 
+  config.gem "couchrest", :lib => "couchrest", :source => "http://gemcutter.org", :version => "0.34" 
   config.gem 'RedCloth', :version => "4.2.2", :source => "http://gemcutter.org"
   config.gem "factory_girl", :version => "1.2.3", :source => "http://gemcutter.org"
   

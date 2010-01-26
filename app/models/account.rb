@@ -43,8 +43,8 @@ class Account < CouchRest::ExtendedDocument
   # validation
   validates_with_method :password, :method => :validate_passwords # use a special method for this, as we don't have couch properties to store the cleartext password
   validates_with_method :email, :method => :check_email_uniqueness
-  validates_format :email, :as => :email_address # use the built-in email validator
-  validates_present :name
+  validates_format_of :email, :as => :email_address # use the built-in email validator
+  validates_presence_of :name
 
   # authentication stuff....
 

@@ -37,8 +37,8 @@ class Article < CouchRest::ExtendedDocument
   
   timestamps!
   
-  validates_present :title
-  validates_length :title, :within => 3..255
+  validates_presence_of :title
+  validates_length_of :title, :within => 3..255
   
   before_save :generate_permalink_from_title
   
