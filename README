@@ -96,7 +96,7 @@ Note: Tempting as it may be, I recommend that you DON'T just put these kinds of 
 4. Configuration
 ================
 
-The only configuration you might need to worry about is the location of the CouchDB for your production environment (e.g. if this is on a different server to your web server). This can be set in config/config.yml
+The only configuration you might need to worry about is the location of the CouchDB for your production environment (e.g. if this is on a different server to your web server). You can also change for which rails environments caching is performed.  These settings can be set in config/config.yml.
 
 
 5. Deployment
@@ -128,7 +128,7 @@ A couple of the functional tests rely on the test and test2 blog themes existing
 7. Caching
 ==========
 
-SemanticJournal uses Rack/Cache. By default this is set up to create a cache in the tmp/cache folder.  If you're changing code, and things aren't changing in your browser, try deleting this (it will automatically rebuild the cache on subsequent requests).
+SemanticJournal uses Rack/Cache. By default this is set up to create a cache in the tmp/cache folder in production mode only.  If you're changing code, and things aren't changing in your browser, try deleting this (it will automatically rebuild the cache on subsequent requests).
 
 The home page is considered to be stale if the most recently updated article has changed since the last request.
 
