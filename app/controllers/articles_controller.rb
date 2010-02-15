@@ -9,26 +9,27 @@ class ArticlesController < ApplicationController
   
   # show an article. Don't need to be logged in, but don't allow viewing of unpublished articles.
   def show
-    fresh_when(:last_modified => @article.updated_at, :public => true)
-    unless @article.is_published?
-      render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return false 
+    if (!APP_CONFIG['caching']) || stale?(:last_modified => @article.updated_at, :public => true)    
+      unless @article.is_published?
+        render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return false 
+      end
     end
   end
   
   def home 
     if @most_recently_updated_article
-      if stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true)
+      if (!APP_CONFIG['caching']) || stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true)    
         @page = params[:page].to_i || 1
         @page = 1 if @page < 1
-        @per_page = 8
-        @articles = Article.get_paginated_articles({:page => @page, :per_page => @per_page})
+        @per_page = 8         
+        @articles = Article.get_paginated_articles(@blog_db, {:page => @page, :per_page => @per_page})
         @total_articles = Article.by_published_at(:reduce => true)["rows"][0]["value"]
       end
     end
   end  
   
   def feed
-    if stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true) 
+    if (!APP_CONFIG['caching']) || stale?(:last_modified => @most_recently_updated_article.updated_at, :public => true) 
       # At the moment, only provide the 10 latest articles in the feed.
       @articles = Article.by_published_at(:limit => 10)
       render :layout => false

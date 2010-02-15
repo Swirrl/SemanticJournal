@@ -103,12 +103,10 @@ class Article < CouchRest::ExtendedDocument
     end
   end
   
-  def self.get_paginated_articles(pagination_options = {:per_page => 5, :page => 1})
-    @database = database
-    options = {:design_doc => 'Article', :view_name => 'by_published_at', :reduce => false, :descending => true, :include_docs => true}
-    options.merge! pagination_options
-    self.paginate(options)
-  end
+  def self.get_paginated_articles(the_database, pagination_options = {:per_page => 5, :page => 1})    
+    prox = CollectionProxy.new(the_database, 'Article', 'by_published_at', { :reduce => false, :descending => true, :include_docs => true}, Article )   
+    prox.paginate(pagination_options)  
+  end 
   
                    
 end

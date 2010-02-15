@@ -18,10 +18,7 @@ class ApplicationController < ActionController::Base
             
       # first, try to match the whole host to a blog's host in the db
       @blog = Blog.by_hosts(:key => request.host, :limit => 1, :reduce=>false).first 
-      
-      # failing that, use the subdomain.
-      @blog = Blog.by_name(:key => request.subdomains.first).first unless @blog
-      
+            
       # redirect to the first item in the hosts array (the 'canonical domain' for this blog.)
       # this ensures that things like disqus work fine, and don't end up with multiple discussion threads:
       # (one for each url.)
@@ -40,9 +37,9 @@ class ApplicationController < ActionController::Base
       end
       
       svr = CouchRest::Server.new(APP_CONFIG['couch_db_location'])
-      couch_db = CouchRest::Database.new(svr, @blog.name)
+      @blog_db = CouchRest::Database.new(svr, @blog.name)
 
-      Thread.current[:blog_db] = couch_db
+      Thread.current[:blog_db] = @blog_db
       
       # For now, this is inside the project folder, but could be somewhere else, and symlinked in.
       # Could also use a sharding approach if we get lots of users!.

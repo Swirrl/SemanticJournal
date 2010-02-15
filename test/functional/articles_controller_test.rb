@@ -28,7 +28,7 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_response :missing
   end
   
-  def test_show_home
+  def test_show_home   
     @request.host = @blog.hosts[0]
     get :home
     assert_response :success
@@ -39,21 +39,7 @@ class ArticlesControllerTest < ActionController::TestCase
     get :feed, :format => "rss"
     assert_response :success
   end
-  
-  def test_show_by_subdomain
-    @request.host = "#{Factory.create(:blog_no_hosts).name}.semanticjournal.com"
-    get :home
-    assert_response :success
-  end
-  
-  def test_show_by_subdomain_when_host_exists
-    @request.host = "#{@blog.name}.semanticjournal.com"
-    get :home
-    assert_response :redirect
-    # should redirect to the canonical host full domain.
-    assert_redirected_to "http://#{@blog.hosts[0]}/"
-  end
-  
+   
   def test_preview_logged_in
     @request.session[:account] = @account.name
     @request.host = @blog.hosts[0]

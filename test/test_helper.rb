@@ -6,7 +6,7 @@ require 'test_help'
 
 module TestDatabaseFromThread
   def database 
-    CouchRest.database!("http://127.0.0.1:5984/semanticjournal_blog_test")
+    CouchRest.database!("http://127.0.0.1:5984/semjo_test_blog")
   end
 end
 
@@ -36,7 +36,7 @@ class ActiveSupport::TestCase
   setup :setup_factories
 
   def setup_factories
-    
+         
     # TODO: genericize this, with some metaprogramming?
 
     Article.all.each do |a|

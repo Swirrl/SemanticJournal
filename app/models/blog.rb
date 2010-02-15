@@ -32,7 +32,7 @@ class Blog < CouchRest::ExtendedDocument
     if hosts && hosts.length > 0
       return hosts[0]
     else
-      return "#{name}.semanticjournal.com"
+      raise RuntimeError.new("no hosts for blog")
     end
   end
    

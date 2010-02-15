@@ -1,9 +1,13 @@
 development:
-  couch_db_location: 'http://127.0.0.1:5984'
+  couch_db_location: 'http://127.0.0.1:5984' 
+  caching: false
 
 test:
-  couch_db_location: 'http://127.0.0.1:5984'
+  couch_db_location: 'http://127.0.0.1:5984'  
+  caching: false
 
 production:
-  couch_db_location: 'http://127.0.0.1:5984'
+  couch_db_location: 'http://127.0.0.1:5984'    
+  caching: true
+
 
