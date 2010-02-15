@@ -120,7 +120,7 @@ Taks a look at lib/tasks/design_docs.rake for other options.
 
 The default rake task runs all the unit and funcitonal tests, as you'd expect for a Rails project.  (i.e. just run rake).
 
-The tests will create 2 databases: semanticjournal_test and semanticjournal_blog_test.  If these bother you, you can delete them (they will be re-created the next time the tests run).
+The tests will create 2 databases: semanticjournal_test and semjo_test_blog.  If these bother you, you can delete them (they will be re-created the next time the tests run).
 
 A couple of the functional tests rely on the test and test2 blog themes existing, but you can delete these in production if you like.
 
@@ -166,7 +166,7 @@ The semanticjournal database stores 2 types of document:
 10. Themes
 ==========
 
-I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the views/themes/ricroberts folder.  You can use as a coding reference or for ideas.  Note: the "test", and "test2" folders are there for the unit tests and you can just ignore them (see the "Tests" section of this README).
+I've included in the repository all the theme templates for my own blog (http://ricroberts.com), in the views/themes/ricroberts folder.  You can use as a coding reference or for ideas.  Note: the "semjo_test_blog" folder is just there for the unit tests and you can just ignore it (see the "Tests" section of this README).
 
 10.1 Semantic Helpers
 ---------------------
