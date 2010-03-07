@@ -1,26 +1,9 @@
 <% content_for :template_head do %>
 
- 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 	<title>Ric Roberts: Ruby and JavaScript developer, Manchester, UK.</title>
 
-  <link rel="stylesheet" type="text/css" href="http://ricroberts.s3.amazonaws.com/reset.css " />
-  <link rel="stylesheet" type="text/css" href="http://ricroberts.s3.amazonaws.com/text.css" />
-	<link rel="stylesheet" type="text/css" href="http://ricroberts.s3.amazonaws.com/960.css" />
-  
-  <link rel="stylesheet" type="text/css" href="http://ricroberts.s3.amazonaws.com/ricroberts.css" />
-
-	<!--[if IE 6]>
-		<link rel="stylesheet" type="text/css" href="http://ricroberts.s3.amazonaws.com/ricrobertsIE6.css" />
-	<![endif]-->
-
-	<link rel="alternate" type="application/rss+xml"
-	  title="RSS Feed for ricroberts.com" 
-	  href="http://feeds2.feedburner.com/richtext" />
-
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <%= render :partial => "head" %>
 	
-	<%= render :partial => 'twitter_script'%>
-
 <% end %>
 
 <%= render :partial => 'twitter' %>
@@ -46,14 +29,6 @@
 
 </div>
 
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try{
-var pageTracker = _gat._getTracker("UA-XXXXXXX-X");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+<%= render :partial => "analytics" %>
 
 
