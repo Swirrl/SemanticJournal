@@ -4,32 +4,47 @@
 
   <%= render :partial => "head" %>
 
-	<script type="text/javascript">
-	   <%= "var disqus_developer = 1;" if Rails.env.to_sym == :development %>
-	   var disqus_url = '<%= "http://#{@blog.canonical_url}/articles/#{@article.permalink}" %>';
-	   var disqus_title = '<%= h(@article.title) %>';
-	</script>
-	
+  <script type="text/javascript">
+     <%= "var disqus_developer = 1;" if Rails.env.to_sym == :development %>
+     var disqus_url = '<%= "http://#{@blog.canonical_url}/articles/#{@article.permalink}" %>';
+     var disqus_title = '<%= h(@article.title) %>';
+  </script>
+  
 <% end %>
 
 <%= render :partial => 'twitter' %>
 
 <div class="container_12">
-	
-	<%= render :partial => "masthead" %>
-	
-	<div id="content" class="full_post">
-	  	
-		<div class="grid_8 main">
-			<div id="share_this"><script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=8dc79e7f-36e3-4a4c-ba6b-36ee522c00c8&amp;type=website"></script></div>
-			<%= render :partial => 'full_post'%>
-		</div> 
-	  <%= render :partial => 'sidebar' %>
+  
+  <%= render :partial => "masthead" %>
+  
+  <div id="content" class="full_post">
+      
+    <div class="grid_8 main">
+      <div id="share_this"><script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=8dc79e7f-36e3-4a4c-ba6b-36ee522c00c8&amp;type=website"></script></div>
+      <%= render :partial => 'full_post'%>
+    </div> 
+    <%= render :partial => 'sidebar' %>
   </div>
 
   <%= render :partial => 'copyright'%>
 
 </div>
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+  var links = document.getElementsByTagName('a');
+  var query = '?';
+  for(var i = 0; i < links.length; i++) {
+  if(links[i].href.indexOf('#disqus_thread') >= 0) {
+    query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+  }
+  }
+  document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/ricroberts/get_num_replies.js' + query + '"></' + 'script>');
+})();
+//]]>
+</script>
 
 <%= render :partial => "analytics" %>
 
