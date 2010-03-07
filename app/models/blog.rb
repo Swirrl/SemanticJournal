@@ -8,6 +8,7 @@ class Blog < CouchRest::ExtendedDocument
   
   property :name
   property :hosts
+  property :html5, :cast_as => :boolean, :default => false
 
   view_by :name 
 
