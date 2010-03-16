@@ -58,7 +58,7 @@ namespace :semjo do
     svr = CouchRest::Server.new(couch_server)    
     blogdb = CouchRest::Database.new(svr, blog_name)
     
-    acc = Account.get(args.account_name)
+    acc = Account.get(account_name)
     
     unless acc
       puts 'making new account'
