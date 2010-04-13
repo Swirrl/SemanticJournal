@@ -1,7 +1,12 @@
 <% form_for(@article, :url => post_article_path(@article) ) do |f| %>
 	<p>Title: <%= f.text_field :title %></p>
-	<p>Content: </p>
-	<%= f.text_area :content, :cols => 60 %>
+<% unless @article.new_record? %>
+	<p>Permalink: <%= f.text_field :permalink %> </p>
+<% end %>
+	<p>
+		Content: (<%= link_to "textile", "http://redcloth.org/hobix.com/textile/quick.html"%> markup)<br/>
+	  <%= f.text_area :content, :cols => 60 %>
+	</p>
 	<p>Published? <%= f.check_box :is_published?, {}, true, false %></p>
 	<br /><%= f.submit "save" %>
 <% end %>

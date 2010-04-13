@@ -100,6 +100,7 @@ class ArticlesController < ApplicationController
       @article.title = article_params["title"]
       @article.content = article_params["content"]
       @article.set_published(article_params["is_published"]=="true", session[:account])
+      @article.set_permalink( article_params["permalink"] ) if article_params["permalink"]
     end
   
     def get_article_by_permalink

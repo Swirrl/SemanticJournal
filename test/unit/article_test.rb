@@ -33,6 +33,18 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal "Title must not be blank", a.errors[:title].first
   end
   
+  def test_set_permalink
+    a = Factory.create(:permalink_less_article)  
+    assert_equal "this-is-a-title-123", a.permalink 
+    a.set_permalink("blah")
+    assert a.save
+    assert_equal "blah", a.permalink 
+    
+    a.set_permalink("blah&^%")
+    assert a.save
+    assert_equal "blah", a.permalink
+  end
+  
   def test_title_too_short
     a = Article.new
     a.title = "ab"     
