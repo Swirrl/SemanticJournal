@@ -1,2 +1,4 @@
-<%= article.title %> <%= link_to "edit", hash_for_edit_article_path({:id => article.permalink}) %> 
+<%= article.title %> 
+<%= "(not published)" unless article.is_published? %> 
+<%= link_to "edit", hash_for_edit_article_path({:id => article.permalink}) %>
 <%= link_to 'delete', hash_for_article_path({:id => article.permalink}), :confirm => "Are you sure?", :method => :delete %><br/>
