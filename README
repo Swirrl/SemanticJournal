@@ -1,6 +1,8 @@
 *****
 
-VERSION 2 of SemanticJournal replaces this project: http://github.com/swirrl/semjo
+VERSION 2 of SemanticJournal is now available: http://github.com/swirrl/semjo (featuring Rails 3 support, and latest couchrest_model).
+
+You probably want to use that instead.
 
 *****
 
